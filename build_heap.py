@@ -23,39 +23,26 @@ def build_heap(data):
 
 
 def main():
-    # add another input for I or F 
-    # first two tests are from keyboard, third test is from a file
-    inputs = input()
-    inputs = inputs.upper()
-
-
-    # input from keyboard
-    if inputs.startswith("I"):
+    option = str(input())
+    if "I" in option:
         n = int(input())
         data = list(map(int, input().split()))
-    if inputs.startswith("F"):
-        name = input()
-        name = "tests/" + str(name)
-        with open(name, 'r') as edit:
-            n = int(edit.readline())
-            data = list(map(int, edit.readline().split()))
-
-    # checks if lenght of data is the same as the said lenght
-    assert len(data) == n
-
-    # calls function to assess the data 
-    # and give back all swaps
-    swaps = build_heap(data)
-
-
-    # this number should be less than 4n (less than 4*len(data))
-    assert(len(swaps))<=4*n
-    # output all swaps
-    print(len(swaps))
-    
-    
-    for i, j in swaps:
-        print(i, j)
+        assert len(data) == n
+        swaps = build_heap(data)
+        print(len(swaps))
+        for i, j in swaps:
+            print(i, j)
+        return
+    if "F" in option:
+        file = str(input())
+        file = "tests/" + str(file)
+        with open(file, 'r') as pakete:
+            n = int(pakete.readline())
+            data = list(map(int, pakete.readline().split()))
+        assert len(data) == n
+        swaps = build_heap(data)
+        print(len(swaps))
+        return 
 
 
 if __name__ == "__main__":

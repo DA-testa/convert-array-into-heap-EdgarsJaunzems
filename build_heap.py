@@ -3,20 +3,19 @@
 
 def build_heap(data):
     swaps = []
-    # try to achieve  O(n) and not O(n2)
     length = len(data)
-    for r in range(length, -1, -1):
-        t = r
+    for i in range(length, -1, -1):
+        j = i
         while True:
-            tree = t*2+1
-            if tree >= length:
+            zars = j*2 + 1
+            if zars >= length:
                 break
-            if tree+1<length and data[tree] > data[tree+1]:
-                tree = tree+1
-            if data[t] > data[tree]:
-                swaps.append(t, tree)
-                data[t],data[tree] = data[tree],data[t]
-                t = tree
+            if zars+1 < length and data[zars+1] < data[zars]:
+                zars = zars+1
+            if data[j] > data[zars]:
+                swaps.append((j, zars))
+                data[j], data[zars] = data[zars], data[j]
+                j = zars
             else:
                 break
     return swaps

@@ -5,18 +5,18 @@ def build_heap(data):
     swaps = []
     # TODO: Creat heap and heap sort
     # try to achieve  O(n) and not O(n2)
-    length = len(info)
+    length = len(data)
     for s in range(length, -1, 1):
         a = s
         while True:
             tree = a*2+1
             if tree >= length:
                 break
-            if tree+1<length and info[tree+1] < info[tree]:
+            if tree+1<length and data[tree+1] < data[tree]:
                 tree = tree+1
-            if info[a] > info [tree]:
+            if data[a] > data [tree]:
                 swaps.append((a, tree))
-                info[a],info[tree] = info[tree],info[a]
+                data[a],data[tree] = data[tree],data[a]
                 a=tree
             else:
                 break
@@ -41,8 +41,8 @@ def main():
     if input.startswith("F"):
         name = input()
         file = open("./tests/"+name,'r')
-        n = int(testFile.readline())
-        dataLasa = testFile.readline()
+        n = int(file.readline())
+        dataLasa = file.readline()
         data =list(map(int, dataLasa.split()))
 
     # checks if lenght of data is the same as the said lenght

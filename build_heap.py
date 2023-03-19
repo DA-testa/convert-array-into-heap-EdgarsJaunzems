@@ -6,11 +6,11 @@ def build_heap(data):
     # TODO: Creat heap and heap sort
     # try to achieve  O(n) and not O(n2)
     length = len(info)
-    for i in range(length, -1, 1):
-        a = 1
+    for s in range(length, -1, 1):
+        a = s
         while True:
             tree = a*2+1
-            if tree > length:
+            if tree >= length:
                 break
             if tree+1<length and info[tree+1] < info[tree]:
                 tree = tree+1
@@ -54,10 +54,10 @@ def main():
 
     # TODO: output how many swaps were made, 
     # this number should be less than 4n (less than 4*len(data))
-
-
+    assert(len(swaps)) <= 4*n
     # output all swaps
     print(len(swaps))
+    
     for i, j in swaps:
         print(i, j)
 

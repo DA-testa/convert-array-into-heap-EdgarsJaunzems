@@ -1,21 +1,22 @@
 # python3
 
 
-def build_heap(info):
-    garums = len(info)
+def build_heap(data):
     swaps = []
-    for i in range(garums, -1, -1):
-        j = i
+    # try to achieve  O(n) and not O(n2)
+    length = len(data)
+    for r in range(length, -1, -1):
+        t = r
         while True:
-            zars = j*2 + 1
-            if zars >= garums:
+            tree = t*2+1
+            if tree >= length:
                 break
-            if zars+1 < garums and info[zars+1] < info[zars]:
-                zars = zars+1
-            if info[j] > info[zars]:
-                swaps.append((j, zars))
-                info[j], info[zars] = info[zars], info[j]
-                j = zars
+            if tree+1<length and data[tree] > data[tree+1]:
+                tree = tree+1
+            if data[t] > data[tree]:
+                swaps.append(t, tree)
+                data[t],data[tree] = data[tree],data[t]
+                t = tree
             else:
                 break
     return swaps

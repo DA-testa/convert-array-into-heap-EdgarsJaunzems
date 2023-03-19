@@ -5,23 +5,20 @@ def build_heap(data):
     swaps = []
     # try to achieve  O(n) and not O(n2)
     length = len(data)
-    for s in range(length, -1, 1):
-        a = s
+    for r in range(length, -1, 1):
+        t = r
         while True:
-            tree = a*2+1
+            tree = t*2+1
             if tree >= length:
                 break
             if tree+1<length and data[tree] > data[tree+1]:
                 tree = tree+1
-            if data[a] > data[tree]:
-                swaps.append(a, tree)
-                data[a],data[tree] = data[tree],data[a]
-                a=tree
+            if data[t] > data[tree]:
+                swaps.append(t, tree)
+                data[t],data[tree] = data[tree],data[t]
+                t = tree
             else:
                 break
-
-
-
     return swaps
 
 
@@ -38,10 +35,10 @@ def main():
         data = list(map(int, input().split()))
     if inputs.startswith("F"):
         name = input()
-        file = open("./tests/" + name,'r')
-        n = int(file.readline())
-        read = file.readline()
-        data =list(map(int, read.split()))
+        name = "tests/" + str(name)
+        with open(name, 'r') as edit:
+            n = int(edit.readline())
+            data = list(map(int, edit.readline().split()))
 
     # checks if lenght of data is the same as the said lenght
     assert len(data) == n

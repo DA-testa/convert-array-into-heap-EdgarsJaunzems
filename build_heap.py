@@ -7,15 +7,15 @@ def build_heap(data):
     for i in range(length, -1, -1):
         j = i
         while True:
-            zars = j*2 + 1
-            if zars >= length:
+            tree = j*2 + 1
+            if tree >= length:
                 break
-            if zars+1 < length and data[zars+1] < data[zars]:
-                zars = zars+1
-            if data[j] > data[zars]:
-                swaps.append((j, zars))
-                data[j], data[zars] = data[zars], data[j]
-                j = zars
+            if tree+1 < length and data[tree] > data[tree+1] :
+                tree = tree+1
+            if data[j] > data[tree]:
+                swaps.append((j, tree))
+                data[j], data[tree] = data[tree], data[j]
+                j = tree
             else:
                 break
     return swaps
